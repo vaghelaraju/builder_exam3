@@ -9,6 +9,7 @@ import {
     ActivityIndicator,
     SafeAreaView
 } from 'react-native';
+import { Card, Title, Paragraph } from 'react-native-paper';
 
 type Props = {};
 type SS = {
@@ -80,6 +81,8 @@ export default class HomeScreen extends Component<Props, SS> {
     }
     renderItem = (item: any) => {
         return (
+            <Card style={{marginTop:10}}>
+             <Card.Content>
             <TouchableOpacity
                 activeOpacity={0.9}
                 onPress={() => {
@@ -93,6 +96,9 @@ export default class HomeScreen extends Component<Props, SS> {
                     <Text style={styles.commonPadding}>{item.created_at}</Text>
                 </View>
             </TouchableOpacity>
+            </Card.Content>
+          </Card>
+            
 
 
         )
@@ -131,7 +137,7 @@ export default class HomeScreen extends Component<Props, SS> {
                     data={this.state.dataList}
                     renderItem={({ item }) => this.renderItem(item)}
                     keyExtractor={(item) => item.id}
-                    ItemSeparatorComponent={this.renderSeparator}
+                    // ItemSeparatorComponent={this.renderSeparator}
                     onEndReached={this.loadMoreData}
                     onEndReachedThreshold={0.1}
                     ListFooterComponent={this.renderFooter.bind(this)}
